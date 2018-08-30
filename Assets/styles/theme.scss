@@ -1,0 +1,11 @@
+// Import Bootstrap
+
+// Overrides
+	$enabled-rounded: false; // Disable rounded corners
+	$theme-colors: (
+		"primary": #cd1212
+	);
+// End overrides
+
+@import "Bootstrap/bootstrap";
+@import "navigation";
