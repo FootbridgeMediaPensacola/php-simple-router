@@ -1,0 +1,28 @@
+img{
+	max-width:100%;
+}
+
+#page{
+	max-width:1550px;
+}
+
+.upload-image-preview{
+	width:200px;
+	height:200px;
+	border:1px solid silver;
+}
+
+.photo-column{
+	width:200px;
+	max-width:200px;
+	padding-left:map-get($spacers, 3);
+	padding-right:map-get($spacers, 3);
+}
+
+.photo-container{
+	background-color:$gray-300;
+	border-radius:map-get($spacers, 1);
+	border:1px solid gray;
+	overflow:hidden;
+	margin-bottom:$spacer * 2;
+}

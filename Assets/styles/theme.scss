@@ -2,10 +2,16 @@
 
 // Overrides
 	$enabled-rounded: false; // Disable rounded corners
+	$body-bg: #eee;
 	$theme-colors: (
-		"primary": #cd1212
+		"primary": #c56060,
+		"success": #6610f2
 	);
 // End overrides
 
 @import "Bootstrap/bootstrap";
 @import "navigation";
+@import "inputs";
+@import "header";
+@import "footer";
+@import "page";

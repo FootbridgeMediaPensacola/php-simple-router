@@ -1,0 +1,27 @@
+.hidden-upload-button input{
+	visibility:hidden;
+	position:absolute;
+}
+
+.fake-textarea input,.fake-textarea input:active, .fake-textarea input:focus{
+	min-width:230px;
+	border:none !important;
+	outline:none !important;
+}
+
+.image-tag-input-box{
+	background-color: $gray-300;
+	padding: ($spacer * 0.25);
+	margin-left: ($spacer * 0.15);
+	margin-right: ($spacer * 0.15);
+	border-radius: map-get($spacers, 1);
+}
+
+.fake-textarea{
+	height:unset;
+}
+
+.delete-icon{
+	cursor:pointer;
+	margin-left:map-get($spacers, 2);
+}
