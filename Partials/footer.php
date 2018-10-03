@@ -49,6 +49,7 @@
 					</div>
 				</div>
 				<div class="my-3 bg-danger p-2 text-white d-none" id="image-error"></div>
+				<div class="my-3 bg-success p-2 text-white d-none" id="image-success">Image has been uploaded to the database successfully.</div>
 			</div>
 			<div class="modal-footer">
 				<button id="submit-new-image" type="submit" class="btn btn-success">Submit Entry</button>

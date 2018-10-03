@@ -154,7 +154,16 @@ $("#upload-image-form").on("submit", function(e){
 		contentType:false,
 		processData:false,
 		success:function(r){
-
+			// Clear out the previous image data from the client's upload modal
+			$("#upload-image-form .upload-image-preview").removeAttr('src');
+			$("#upload-tags-container .image-tag-input-box").remove();
+			$("#image-file-type").html("");
+			$("#image-file-dimensions").html("");
+			$("#image-success").css("opacity", 1).removeClass("d-none").animate({
+				opacity:0
+			}, 1000, function(){
+				$("#image-success").addClass("d-none");
+			});
 		}
 	})
 
