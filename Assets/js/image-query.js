@@ -16,6 +16,8 @@ function renderImageItem(image){
 	item.find(".photo").attr('src', thumbnailSrc).attr("full-src", fullSizeSrc);
 	item.find(".tags").html(image.tags.join(", "));
 	item.find(".dimensions").html(image.width + " x " + image.height);
+	item.find(".view-button").attr('href', image.location + "/" + image.fileName);
+	item.find(".download-button").attr('href', image.location + "/" + image.fileName);
 
 	getNextAppendColumn().append(item);
 }

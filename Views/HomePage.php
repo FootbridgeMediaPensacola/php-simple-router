@@ -34,6 +34,12 @@
 					<div class="px-2 small">
 						<strong>Dimensions: </strong><span class="dimensions"></span>
 					</div>
+					<div>
+						<div class="d-flex">
+							<a class="view-button p-1 flex-grow-1 m-1 btn btn-sm btn-success">View</a>
+							<a download class="download-button flex-grow-1 m-1 btn btn-sm btn-dark">Download</a>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
