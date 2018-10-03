@@ -10,23 +10,36 @@
 
 	$response->setHeaderContentTypeToJSON();
 
-	$searchQuery = '
+	$query = trim($request->getGetValue("query", ""));
+	$tags = preg_split('/[\ \n\,]+/', $query); // Array of all possible tags
+
+	// Build the query clause
+	$formattedQuery = "";
+	foreach($tags as $index=>$tag){
+
+		if ($index > 0){
+			$formattedQuery .= "OR ";
+		}
+
+		$formattedQuery .= "tag LIKE '%" . $connection->real_escape_String($tag) . "%'";
+	}
+
+	$formattedTitleQuery = str_replace("tag LIKE", "fileName LIKE", $formattedQuery); // Format for fileName searching
+
+	$searchQuery = "
 		SELECT * FROM images WHERE id IN (
-		    SELECT imageID FROM images_tags WHERE tag LIKE ?
-		) OR fileName LIKE ?
-	';
+		    SELECT imageID FROM images_tags WHERE $formattedQuery
+		) OR $formattedTitleQuery
+	";
 
 	$totalQuery = '
 		SELECT * FROM images ORDER BY id DESC
 	';
 
-	$query = trim($request->getGetValue("query", ""));
 	if ($query == ""){
 		$statement = $connection->prepare($totalQuery);
 	}else{
-		$formattedQuery = "%$query%";
 		$statement = $connection->prepare($searchQuery);
-		$statement->bind_param("ss", $formattedQuery, $formattedQuery);
 	}
 	$statement->execute();
 	$result = $statement->get_result();
@@ -42,4 +55,4 @@
 		$packet[$index]['tags'] = $Images->getTags($image['id']);
 	}
 
-	$response->jsonSuccess(["images"=>$packet]);
+	$response->jsonSuccess(["images"=>$packet, "formattedTags"=>$tags, "tagQuery"=>$formattedQuery]);
